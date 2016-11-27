@@ -1,0 +1,32 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <a href="@Url.Action("Create","Empleados")">Agregar nuevo empleado</a>
+        <table  border="0">
+           <tr> <th>Nombre completo</th>
+               <th>Puesto que realiza</th>
+             <th>Fecha de ingreso</th>
+            
+            <th>Sueldo Mensual</th>
+            </tr>
+            @foreach (var empleados in ViewBag.listEmpleados)
+            { <tr> 
+            <th>@empleados.Nombre</th>
+            <th>@empleados.Puesto</th>
+            <th>@empleados.Fecha_Ingreso.ToString("dd/MM/yyyy")</th>
+            <th>@empleados.Sueldo</th>
+            </tr>
+            }
+
+        </table> 
+    </div>
+</body>
+</html>

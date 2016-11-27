@@ -1,0 +1,53 @@
+﻿
+@model HilfepatienAPI_Cliente.ViewModels.EmpleadosViewModel
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Registrar Empleado</title>
+</head>
+<body background="~/images/fondo1.jpg">
+    @using (Html.BeginForm("Create","Empleados", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend align="center" class="ltraarriba">Nuevo Empleado</legend>
+            <div align="right"> @Html.ActionLink("Regresar a la lista principal", "Index")</div>
+            <center>
+                <br />
+                <br />
+                <div class="register">
+                    <div class="editor-field">
+                        <label>Nombre completo</label>
+                       @Html.TextBoxFor(model => model.Empleados.Nombre)
+                              </div>
+                    <br />
+                    <div class="editor-field">
+                        <label>Puesto asignado</label>
+                        @Html.TextBoxFor(model => model.Empleados.Puesto)
+                    </div>
+                    <br />
+                 
+                   
+                    <div class="editor-field">
+                        <label>Sueldo asignado</label>
+                         @Html.TextBoxFor(model => model.Empleados.Sueldo)
+                    </div>
+                </div>
+                <br />
+                <div class="botonesbajo1">
+                    <p>
+                        <input type="submit" value="Nuevo registro" class="btn-success" />
+
+                    </p>
+                </div>
+            </center>
+        </fieldset>
+    }
+
+</body>
+</html>

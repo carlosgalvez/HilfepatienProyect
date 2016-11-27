@@ -1,0 +1,40 @@
+﻿@model HilfepatienMvc.Models.Empleados
+
+<!DOCTYPE html>
+<head>
+<link href="~/css/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/css/styles.css" rel="stylesheet" />
+    </head> <body background="~/images/fondo1.jpg">
+    <fieldset>
+        <center>
+            <h2>Detalles del empleado</h2>
+        </center>
+        <br />
+        <div class="display-label">
+            <label>Nombre completo: </label>
+
+            @Html.DisplayFor(model => model.Nombre)
+        </div>
+        <br />
+        <div class="display-label">
+            <label>Puesto que pertenece: </label>
+            @Html.DisplayFor(model => model.Puesto)
+        </div>
+        <br />
+        <div class="display-label">
+            <label>Fecha de ingreso:</label>
+            @Html.DisplayFor(model => model.Fecha_Ingreso)
+        </div>
+        <br />
+        <div class="display-label">
+            <label>Sueldo mensual: </label>
+            $@Html.DisplayFor(model => model.Sueldo)
+        </div>
+    </fieldset><center>
+        <p>
+            @Html.ActionLink("Editar este empleado", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Regresar a la list principal", "Index")
+        </p>
+    </center>
+</body>

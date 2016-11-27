@@ -1,0 +1,52 @@
+﻿@model HilfepatienMvc.Models.Empleados
+
+<!DOCTYPE html>
+<head>
+<link href="~/css/bootstrap.css" rel="stylesheet" />
+<link href="~/css/styles.css" rel="stylesheet" />
+    </head>
+<body background="~/images/fondo1.jpg">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <center><legend>Empleados</legend></center>
+
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="editor-label">
+                <label>Nombre completo: </label>
+                @Html.EditorFor(model => model.Nombre)
+                @Html.ValidationMessageFor(model => model.Nombre)
+            </div>
+
+            <div class="editor-label">
+                <label>Puesto: </label>
+                @Html.EditorFor(model => model.Puesto)
+                @Html.ValidationMessageFor(model => model.Puesto)
+            </div>
+
+            <div class="editor-label">
+                <label>Fecha de ingreso: </label>
+                @Html.EditorFor(model => model.Fecha_Ingreso)
+                @Html.ValidationMessageFor(model => model.Fecha_Ingreso)
+            </div>
+
+            <div class="editor-label">
+                <label>Sueldo mensual: </label>
+                @Html.EditorFor(model => model.Sueldo)
+                @Html.ValidationMessageFor(model => model.Sueldo)
+            </div>
+            <br />
+            <p>
+                <input type="submit" value="Save" class="btn-success" /> @Html.ActionLink("Back to List", "Index")
+            </p>
+        </fieldset>
+    }
+
+
+
+</body>
