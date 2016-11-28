@@ -4,13 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace HilfepatienApi.Controllers
+namespace HilfepatienAPI_Cliente.Controllers
 {
-    public class HomeController : Controller
+    public class UsuariosController : Controller
     {
+        //
+        // GET: /Usuarios/
         public ActionResult Index()
         {
             return View();
         }
-    }
+	}
 }

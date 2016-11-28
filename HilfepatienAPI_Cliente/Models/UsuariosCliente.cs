@@ -1,48 +1,28 @@
-﻿#region librerias 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Net;
 using System.Net.Http;
+using System.Net;
 using System.Net.Http.Formatting;
-using HilfepatienApi.Models;
 using System.Net.Http.Headers;
-#endregion 
-
+using HilfepatienApi.Models;
 
 namespace HilfepatienAPI_Cliente.Models
 {
-    public class EmpleadosCliente
+    public class UsuariosCliente
     {
         public String BASE_URL = "http://localhost:41709/api/";
-
-        public IEnumerable<Empleados> findAll() {
-            try
-            {
-                HttpClient cliente = new HttpClient();
-                cliente.BaseAddress = new Uri(BASE_URL);
-                cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.GetAsync("Empleados").Result;
-                if (respuesta.IsSuccessStatusCode) 
-                return respuesta.Content.ReadAsAsync<IEnumerable<Empleados>>().Result;
-                return null;
-                
-            }
-            catch {
-                return null;
-            }
-        }
-        public Empleados find(int id)
+        public IEnumerable<Usuarios> findAll()
         {
             try
             {
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.GetAsync("Empleados/" + id).Result;
+                HttpResponseMessage respuesta = cliente.GetAsync("Usuarios").Result;
                 if (respuesta.IsSuccessStatusCode)
-                    return respuesta.Content.ReadAsAsync<Empleados>().Result;
+                    return respuesta.Content.ReadAsAsync<IEnumerable<Usuarios>>().Result;
                 return null;
 
             }
@@ -51,15 +31,33 @@ namespace HilfepatienAPI_Cliente.Models
                 return null;
             }
         }
-        public bool Create(Empleados Empleados)
+        public Usuarios find(int id)
         {
             try
             {
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.PostAsJsonAsync("Empleados", Empleados).Result;
-                return respuesta.IsSuccessStatusCode;               
+                HttpResponseMessage respuesta = cliente.GetAsync("Usuarios/" + id).Result;
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadAsAsync<Usuarios>().Result;
+                return null;
+
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public bool Create(Usuarios Usuarios)
+        {
+            try
+            {
+                HttpClient cliente = new HttpClient();
+                cliente.BaseAddress = new Uri(BASE_URL);
+                cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage respuesta = cliente.PostAsJsonAsync("Usuarios", Usuarios).Result;
+                return respuesta.IsSuccessStatusCode;
 
             }
             catch
@@ -67,14 +65,14 @@ namespace HilfepatienAPI_Cliente.Models
                 return false;
             }
         }
-        public bool Edit(Empleados Empleados)
+        public bool Edit(Usuarios Usuarios)
         {
             try
             {
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.PutAsJsonAsync("Empleados/"+Empleados.Id, Empleados).Result;
+                HttpResponseMessage respuesta = cliente.PutAsJsonAsync("Usuarios/" + Usuarios.Id, Usuarios).Result;
                 return respuesta.IsSuccessStatusCode;
 
             }
@@ -90,14 +88,15 @@ namespace HilfepatienAPI_Cliente.Models
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.DeleteAsync("Empleados/" + id).Result;
+                HttpResponseMessage respuesta = cliente.DeleteAsync("Usuarios/" + id).Result;
                 return respuesta.IsSuccessStatusCode;
-                
+
             }
             catch
             {
                 return false;
             }
         }
+        
     }
 }

@@ -14,7 +14,6 @@ namespace HilfepatienApi.Models
         public DateTime Fecha { get; set; }
 
         public virtual Paciente Paciente {get;set;}
-
-        
+       
     }
 }

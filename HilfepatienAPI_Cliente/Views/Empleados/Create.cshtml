@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    Layout = null;   
+}
 @model HilfepatienAPI_Cliente.ViewModels.EmpleadosViewModel
 
 <!DOCTYPE html>
@@ -11,9 +13,6 @@
 <body background="~/images/fondo1.jpg">
     @using (Html.BeginForm("Create","Empleados", FormMethod.Post))
     {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-
         <fieldset>
             <legend align="center" class="ltraarriba">Nuevo Empleado</legend>
             <div align="right"> @Html.ActionLink("Regresar a la lista principal", "Index")</div>

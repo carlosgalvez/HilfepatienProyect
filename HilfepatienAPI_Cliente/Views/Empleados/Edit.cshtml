@@ -1,52 +1,53 @@
-﻿@model HilfepatienMvc.Models.Empleados
+﻿@{
+    Layout = null;
+}
+
+@model HilfepatienAPI_Cliente.ViewModels.EmpleadosViewModel
 
 <!DOCTYPE html>
+
+<html>
+
 <head>
-<link href="~/css/bootstrap.css" rel="stylesheet" />
-<link href="~/css/styles.css" rel="stylesheet" />
-    </head>
+    <title>Editar Empleado</title>
+</head>
 <body background="~/images/fondo1.jpg">
-
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit", "Empleados", FormMethod.Post))
     {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-
         <fieldset>
-            <center><legend>Empleados</legend></center>
+            <legend align="center" class="ltraarriba">Editar Empleado</legend>
+            <div align="right"> @Html.ActionLink("Regresar a la lista principal", "Index")</div>
+            <center>
+                <br />
+                <br />
+                <div class="register">
+                    <div class="editor-field">
+                        <label>Nombre completo</label>
+                        @Html.TextBoxFor(model => model.Empleados.Nombre)
+                    </div>
+                    <br />
+                    <div class="editor-field">
+                        <label>Puesto asignado</label>
+                        @Html.TextBoxFor(model => model.Empleados.Puesto)
+                    </div>
+                    <br />
 
-            @Html.HiddenFor(model => model.Id)
 
-            <div class="editor-label">
-                <label>Nombre completo: </label>
-                @Html.EditorFor(model => model.Nombre)
-                @Html.ValidationMessageFor(model => model.Nombre)
-            </div>
-
-            <div class="editor-label">
-                <label>Puesto: </label>
-                @Html.EditorFor(model => model.Puesto)
-                @Html.ValidationMessageFor(model => model.Puesto)
-            </div>
-
-            <div class="editor-label">
-                <label>Fecha de ingreso: </label>
-                @Html.EditorFor(model => model.Fecha_Ingreso)
-                @Html.ValidationMessageFor(model => model.Fecha_Ingreso)
-            </div>
-
-            <div class="editor-label">
-                <label>Sueldo mensual: </label>
-                @Html.EditorFor(model => model.Sueldo)
-                @Html.ValidationMessageFor(model => model.Sueldo)
-            </div>
-            <br />
-            <p>
-                <input type="submit" value="Save" class="btn-success" /> @Html.ActionLink("Back to List", "Index")
-            </p>
+                    <div class="editor-field">
+                        <label>Sueldo asignado</label>
+                        @Html.TextBoxFor(model => model.Empleados.Sueldo)
+                    </div>
+                </div>
+                <br />
+                <div >
+                    <p>
+                        <input type="submit" value="Terminar edicion" class="btn-success" />
+                        @Html.HiddenFor(model => model.Empleados.Id)
+                    </p>
+                </div>
+            </center>
         </fieldset>
     }
 
-
-
 </body>
+</html>
