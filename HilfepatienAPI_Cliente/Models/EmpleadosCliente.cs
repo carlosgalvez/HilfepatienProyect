@@ -76,7 +76,6 @@ namespace HilfepatienAPI_Cliente.Models
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage respuesta = cliente.PutAsJsonAsync("Empleados/"+Empleados.Id, Empleados).Result;
                 return respuesta.IsSuccessStatusCode;
-
             }
             catch
             {

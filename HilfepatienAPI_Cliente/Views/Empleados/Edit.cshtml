@@ -1,53 +1,51 @@
-﻿@{
+﻿
+@{
     Layout = null;
 }
-
 @model HilfepatienAPI_Cliente.ViewModels.EmpleadosViewModel
-
 <!DOCTYPE html>
 
 <html>
-
 <head>
-    <title>Editar Empleado</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
 </head>
-<body background="~/images/fondo1.jpg">
-    @using (Html.BeginForm("Edit", "Empleados", FormMethod.Post))
-    {
-        <fieldset>
-            <legend align="center" class="ltraarriba">Editar Empleado</legend>
-            <div align="right"> @Html.ActionLink("Regresar a la lista principal", "Index")</div>
-            <center>
-                <br />
-                <br />
-                <div class="register">
-                    <div class="editor-field">
-                        <label>Nombre completo</label>
-                        @Html.TextBoxFor(model => model.Empleados.Nombre)
-                    </div>
-                    <br />
-                    <div class="editor-field">
-                        <label>Puesto asignado</label>
-                        @Html.TextBoxFor(model => model.Empleados.Puesto)
-                    </div>
-                    <br />
-
-
-                    <div class="editor-field">
-                        <label>Sueldo asignado</label>
-                        @Html.TextBoxFor(model => model.Empleados.Sueldo)
-                    </div>
+<body>
+   @using (Html.BeginForm("Edit", "Empleados", FormMethod.Post))
+{
+    <fieldset>
+        <legend align="center" class="ltraarriba">Editar Empleado</legend>
+        <div align="right"> @Html.ActionLink("Regresar a la lista principal", "Index")</div>
+        <center>
+            <br />
+            <br />
+            
+                <div class="editor-field">
+                    <label>Nombre completo</label>
+                    @Html.TextBoxFor(model => model.Empleados.Nombre)
                 </div>
                 <br />
-                <div >
-                    <p>
-                        <input type="submit" value="Terminar edicion" class="btn-success" />
-                        @Html.HiddenFor(model => model.Empleados.Id)
-                    </p>
+                <div class="editor-field">
+                    <label>Puesto asignado</label>
+                    @Html.TextBoxFor(model => model.Empleados.Puesto)
                 </div>
-            </center>
-        </fieldset>
-    }
+                <br />
+                <div class="editor-field">
+                    <label>Sueldo asignado</label>
+                    @Html.TextBoxFor(model => model.Empleados.Sueldo)
+                </div>
+            
+            <br />
+            <div class="botonesbajo1">
+                <p>
+                    <input type="submit" value="Nuevo registro" class="btn-success" />
+                    @Html.HiddenFor(model => model.Empleados.Id)
+                </p>
+            </div>
+        </center>
+    </fieldset>
+}
+
 
 </body>
 </html>
