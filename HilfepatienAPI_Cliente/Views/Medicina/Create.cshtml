@@ -1,0 +1,52 @@
+﻿@model HilfepatienAPI_Cliente.ViewModels.MedicinaViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Registrar Medicina</title>
+</head>
+<body background="~/images/fondo1.jpg">
+    @using (Html.BeginForm("Create", "Medicina", FormMethod.Post))
+    {
+
+        <fieldset>
+            <legend align="center" class="ltraarriba">Nueva Medicina</legend>
+            <div align="right"> @Html.ActionLink("Regresar a la lista principal", "Index")</div>
+            <center>
+                <br />
+                <br />
+                <div class="editor-field">
+                    <div class="editor-field">
+                        <label>Id</label>
+                        @Html.TextBoxFor(model => model.Medicina.Id)
+                    </div>
+                    <br />
+                    <div class="editor-field">
+                        <label>Nombre</label>
+                        @Html.TextBoxFor(model => model.Medicina.Nombre)
+                    </div>
+                    <br />
+
+                    <div class="editor-field">
+                        <label>Presentacion</label>
+                        @Html.TextBoxFor(model => model.Medicina.Presentacion)
+                    </div>
+                    <br />
+
+                    <div class="editor-field">
+                        <label>Tipo de Medicamento</label>
+                        @Html.TextBoxFor(model => model.Medicina.TipodeMedicamento)
+                    </div>
+                </div>
+                <br />
+                <div class="botonesbajo1">
+                    <p>
+                        <input type="submit" value="Nuevo registro" class="btn-success" />
+                    </p>
+                </div>
+            </center>
+        </fieldset>
+    }
+    </body>
+</html>

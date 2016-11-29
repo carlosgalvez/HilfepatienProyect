@@ -1,0 +1,49 @@
+﻿
+@model HilfepatienAPI_Cliente.ViewModels.MedicinaViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+</head>
+<body background="~/images/fondo1.jpg">
+
+    @using (Html.BeginForm("Edit", "Medicina", FormMethod.Post))
+    {
+
+        <fieldset>
+            <center><legend>Medicina</legend></center>
+
+            @Html.HiddenFor(model => model.Medicina.Id)
+            <div class="editor-label">
+                <label>Id: </label>
+                @Html.EditorFor(model => model.Medicina.Id)
+                @Html.ValidationMessageFor(model => model.Medicina.Id)
+            </div>
+
+            <div class="editor-label">
+                <label>Nombre: </label>
+                @Html.EditorFor(model => model.Medicina.Nombre)
+                @Html.ValidationMessageFor(model => model.Medicina.Nombre)
+            </div>
+
+            <div class="editor-label">
+                <label>Presentacion:</label>
+                @Html.EditorFor(model => model.Medicina.Presentacion)
+                @Html.ValidationMessageFor(model => model.Medicina.Presentacion)
+            </div>
+
+            <div class="editor-label">
+                <label>Tipo de Medicamento</label>
+                @Html.EditorFor(model => model.Medicina.TipodeMedicamento)
+                @Html.ValidationMessageFor(model => model.Medicina.TipodeMedicamento)
+            </div>
+            <br />
+            <p>
+                <input type="submit" value="Save" class="btn-success" /> @Html.ActionLink("Back to List", "Index")
+            </p>
+        </fieldset>
+    }
+</body>
+</html>

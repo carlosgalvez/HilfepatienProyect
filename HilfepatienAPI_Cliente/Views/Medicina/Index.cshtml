@@ -1,0 +1,33 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body background="~/images/fondo1.jpg">
+    <div> 
+        <a href="@Url.Action("Create","Medicina")">Agregar nueva Medicina</a>
+        <table border="0">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Presentacion</th>
+                <th>Tipo de Medicamento</th>
+
+            </tr>
+            @foreach (var medicina in ViewBag.listMedicina)
+            {
+            <tr>
+                <th>@medicina.Id</th>
+                <th>@medicina.Nombre</th>
+                <th>@medicina.Presentacion</th>
+                <th>@medicina.Tipo_de_Medicamento</th>
+            </tr>
+            }
+
+        </table> 
+    </div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-﻿@model HilfepatienMvc.Models.Empleados
+﻿@model HilfepatienAPI_Cliente.ViewModels.EmpleadosViewModel
 
 <!DOCTYPE html>
 <head>
@@ -7,38 +7,37 @@
     </head>
 <body background="~/images/fondo1.jpg">
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit", "Empleados", FormMethod.Post))
     {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
+
 
         <fieldset>
             <center><legend>Empleados</legend></center>
 
-            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Empleados.Id)
 
             <div class="editor-label">
                 <label>Nombre completo: </label>
-                @Html.EditorFor(model => model.Nombre)
-                @Html.ValidationMessageFor(model => model.Nombre)
+                @Html.EditorFor(model => model.Empleados.Nombre)
+                @Html.ValidationMessageFor(model => model.Empleados.Nombre)
             </div>
 
             <div class="editor-label">
                 <label>Puesto: </label>
-                @Html.EditorFor(model => model.Puesto)
-                @Html.ValidationMessageFor(model => model.Puesto)
+                @Html.EditorFor(model => model.Empleados.Puesto)
+                @Html.ValidationMessageFor(model => model.Empleados.Puesto)
             </div>
 
             <div class="editor-label">
                 <label>Fecha de ingreso: </label>
-                @Html.EditorFor(model => model.Fecha_Ingreso)
-                @Html.ValidationMessageFor(model => model.Fecha_Ingreso)
+                @Html.EditorFor(model => model.Empleados.Fecha_Ingreso)
+                @Html.ValidationMessageFor(model => model.Empleados.Fecha_Ingreso)
             </div>
 
             <div class="editor-label">
                 <label>Sueldo mensual: </label>
-                @Html.EditorFor(model => model.Sueldo)
-                @Html.ValidationMessageFor(model => model.Sueldo)
+                @Html.EditorFor(model => model.Empleados.Sueldo)
+                @Html.ValidationMessageFor(model => model.Empleados.Sueldo)
             </div>
             <br />
             <p>
