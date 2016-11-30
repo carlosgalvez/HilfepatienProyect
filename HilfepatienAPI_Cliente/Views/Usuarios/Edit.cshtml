@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model HilfepatienAPI_Cliente.ViewModels.UsuariosViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    @using (Html.BeginForm("Edit", "Usuarios", FormMethod.Post))
+    {
+        <fieldset>
+            <legend align="center" class="ltraarriba">Nuevo Usuario</legend>
+            <div align="right"> @Html.ActionLink("Regresar a la lista principal", "Index")</div>
+            <center>
+                <br />
+                <br />
+                <div class="register">
+                    <div class="editor-field">
+                        <label>Usuario</label>
+                        @Html.TextBoxFor(model => model.Usuarios.Usuario)
+                    </div>
+                    <br />
+                    <div class="editor-field">
+                        <label>Contraseña</label>
+                        @Html.PasswordFor(model => model.Usuarios.Contraseña, new { @class = "form-control", placeholder = "Password" })
+                    </div>
+                    <br />
+
+
+
+                    <div class="botonesbajo1">
+                        <p>
+                            <input type="submit" value="Nuevo registro" class="btn-success" />
+                            @Html.HiddenFor(model => model.Usuarios.Id)
+                        </p>
+                    </div>
+            </center>
+        </fieldset>
+    }
+</body>
+</html>

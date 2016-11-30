@@ -5,7 +5,7 @@ using System.Web;
 
 namespace HilfepatienApi.Models
 {
-    public class Paciente
+    public class Paciente 
     {
         public int Id { get; set; }
         public string Nombre { get; set; }

@@ -8,12 +8,13 @@ using System.Web.Mvc;
 
 namespace HilfepatienAPI_Cliente.Controllers
 {
-    public class MedicinaController : Controller
+    public class PacienteController : Controller
     {
+      
         public ActionResult Index()
         {
-            MedicinaCliente em = new MedicinaCliente();
-            ViewBag.listMedicina = em.findAll();
+            PacienteCliente em = new PacienteCliente();
+            ViewBag.listPaciente = em.findAll();
             return View();
         }
         [HttpGet]
@@ -23,32 +24,32 @@ namespace HilfepatienAPI_Cliente.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(MedicinaViewModel evm)
+        public ActionResult Create(PacienteViewModel evm)
         {
-            MedicinaCliente em = new MedicinaCliente();
-            em.Create(evm.Medicina);
+            PacienteCliente em = new PacienteCliente();
+            em.Create(evm.Paciente);
             return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
         {
-            MedicinaCliente em = new MedicinaCliente();
+            PacienteCliente em = new PacienteCliente();
             em.Delete(id);
             return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            MedicinaCliente em = new MedicinaCliente();
-            MedicinaViewModel evm = new MedicinaViewModel();
-            evm.Medicina = em.find(id);
+            PacienteCliente em = new PacienteCliente();
+            PacienteViewModel evm = new PacienteViewModel();
+            evm.Paciente = em.find(id);
             return View("Edit", evm);
         }
         [HttpPost]
-        public ActionResult Edit(MedicinaViewModel evm)
+        public ActionResult Edit(PacienteViewModel evm)
         {
-            MedicinaCliente em = new MedicinaCliente();
-            em.Edit(evm.Medicina);
+            PacienteCliente em = new PacienteCliente();
+            em.Edit(evm.Paciente);
             return RedirectToAction("Index");
         }
     }

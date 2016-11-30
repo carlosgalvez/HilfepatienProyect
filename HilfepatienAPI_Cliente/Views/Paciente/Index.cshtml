@@ -1,0 +1,44 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body background="~/images/fondo1.jpg">
+    <div> 
+        <a href="@Url.Action("Create","Paciente")">Agregar un nuevo Paciente</a>
+        <table border="0">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Sexo</th>
+                <th>Edad</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+
+            </tr>
+            @foreach (var paciente in ViewBag.Paciente)
+            {
+                <tr>
+                    <td>@paciente.Id</td>
+                    <td>@paciente.Nombre</td>
+                    <td>@paciente.Apellido</td>
+                    <td>@paciente.Sexo</td>
+                    <td>@paciente.Edad</td>
+                    <td>@paciente.Direccion</td>
+                    <td>@paciente.Telefono</td>
+                    <td>
+                        <a onclick=" return confirm('¿Estas seguro/a?')" href="@Url.Action("Delete", "Paciente", new { id = paciente.Id})">Eliminar</a>
+                        <a href="@Url.Action("Edit", "Paciente", new { id = paciente.Id})">Editar</a>
+                    </td>
+                </tr>
+            }
+
+        </table> 
+    </div>
+</body>
+</html>

@@ -1,29 +1,28 @@
-﻿using HilfepatienApi.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Net;
 using System.Net.Http.Formatting;
-
-
+using System.Net.Http.Headers;
+using HilfepatienApi.Models;
 
 namespace HilfepatienAPI_Cliente.Models
 {
-    public class MedicinaCliente
+    public class UsuariosCliente
     {
-        public String BASE_URL = "http://localhost:41827/api/";
-
-        public IEnumerable<Medicina> findAll()
+        public String BASE_URL = "http://localhost:41709/api/";
+        public IEnumerable<Usuarios> findAll()
         {
             try
             {
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.GetAsync("Medicina").Result;
+                HttpResponseMessage respuesta = cliente.GetAsync("Usuarios").Result;
                 if (respuesta.IsSuccessStatusCode)
-                    return respuesta.Content.ReadAsAsync<IEnumerable<Medicina>>().Result;
+                    return respuesta.Content.ReadAsAsync<IEnumerable<Usuarios>>().Result;
                 return null;
 
             }
@@ -32,16 +31,16 @@ namespace HilfepatienAPI_Cliente.Models
                 return null;
             }
         }
-        public Medicina find(int id)
+        public Usuarios find(int id)
         {
             try
             {
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.GetAsync("Medicina/" + id).Result;
+                HttpResponseMessage respuesta = cliente.GetAsync("Usuarios/" + id).Result;
                 if (respuesta.IsSuccessStatusCode)
-                    return respuesta.Content.ReadAsAsync<Medicina>().Result;
+                    return respuesta.Content.ReadAsAsync<Usuarios>().Result;
                 return null;
 
             }
@@ -50,14 +49,14 @@ namespace HilfepatienAPI_Cliente.Models
                 return null;
             }
         }
-        public bool Create(Medicina Medicina)
+        public bool Create(Usuarios Usuarios)
         {
             try
             {
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.PostAsJsonAsync("Medicina", Medicina).Result;
+                HttpResponseMessage respuesta = cliente.PostAsJsonAsync("Usuarios", Usuarios).Result;
                 return respuesta.IsSuccessStatusCode;
 
             }
@@ -66,15 +65,16 @@ namespace HilfepatienAPI_Cliente.Models
                 return false;
             }
         }
-        public bool Edit(Medicina Medicina)
+        public bool Edit(Usuarios Usuarios)
         {
             try
             {
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.PutAsJsonAsync((string)("Medicina/" + Medicina.Id), Medicina).Result;
+                HttpResponseMessage respuesta = cliente.PutAsJsonAsync("Usuarios/" + Usuarios.Id, Usuarios).Result;
                 return respuesta.IsSuccessStatusCode;
+
             }
             catch
             {
@@ -88,7 +88,7 @@ namespace HilfepatienAPI_Cliente.Models
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.DeleteAsync("Medicina/" + id).Result;
+                HttpResponseMessage respuesta = cliente.DeleteAsync("Usuarios/" + id).Result;
                 return respuesta.IsSuccessStatusCode;
 
             }
@@ -97,5 +97,6 @@ namespace HilfepatienAPI_Cliente.Models
                 return false;
             }
         }
+        
     }
 }

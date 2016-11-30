@@ -1,0 +1,67 @@
+﻿@model HilfepatienAPI_Cliente.ViewModels.PacienteViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+</head>
+<body background="~/images/fondo1.jpg">
+        @using (Html.BeginForm("Edit", "Paciente", FormMethod.Post))
+        {
+
+            <fieldset>
+                <center><legend>Medicina</legend></center>
+
+                @Html.HiddenFor(model => model.Paciente.Id)
+                <div class="editor-label">
+                    <label>Id: </label>
+                    @Html.EditorFor(model => model.Paciente.Id)
+                    @Html.ValidationMessageFor(model => model.Paciente.Id)
+                </div>
+
+                <div class="editor-label">
+                    <label>Nombre: </label>
+                    @Html.EditorFor(model => model.Paciente.Nombre)
+                    @Html.ValidationMessageFor(model => model.Paciente.Nombre)
+                </div>
+
+                <div class="editor-label">
+                    <label>Apellido: </label>
+                    @Html.EditorFor(model => model.Paciente.Apellido)
+                    @Html.ValidationMessageFor(model => model.Paciente.Apellido)
+                </div>
+
+                <div class="editor-label">
+                    <label>Sexo: </label>
+                    @Html.EditorFor(model => model.Paciente.Sexo)
+                    @Html.ValidationMessageFor(model => model.Paciente.Sexo)
+                </div>
+
+                <div class="editor-label">
+                    <label>Edad: </label>
+                    @Html.EditorFor(model => model.Paciente.Edad)
+                    @Html.ValidationMessageFor(model => model.Paciente.Edad)
+                </div>
+
+                <div class="editor-label">
+                    <label>Direccion: </label>
+                    @Html.EditorFor(model => model.Paciente.Direccion)
+                    @Html.ValidationMessageFor(model => model.Paciente.Direccion)
+                </div>
+
+                <div class="editor-label">
+                    <label>Telefono: </label>
+                    @Html.EditorFor(model => model.Paciente.Telefono)
+                    @Html.ValidationMessageFor(model => model.Paciente.Telefono)
+                </div>
+                <br />
+                <p>
+                    <input type="submit" value="Save" class="btn-success" /> @Html.ActionLink("Back to List", "Index")
+                </p>
+            </fieldset>
+        }
+
+</body>
+</html>

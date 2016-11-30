@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using System.ComponentModel.DataAnnotations;
+
 namespace HilfepatienApi.Models
 {
     public class Empleados
     {
-        [Display(Name="Id")]
+        [Display(Name = "Id")]
         public int Id { get; set; }
-        [Display(Name = "Nombre")]
+        [Display (Name="Nombre")]
         public string Nombre { get; set; }
-        [Display(Name = "Puesto")]
+        [Display (Name="Puesto")]
         public string Puesto { get; set; }
-        [Display(Name = "Fecha_Ingreso")]
+        [Display (Name="Fecha_Ingreso")]
         public DateTime Fecha_Ingreso { get; set; }
-        [Display(Name = "Sueldo")]
+        [Display (Name="Sueldo")]
         public int Sueldo { get; set; }
 
     }

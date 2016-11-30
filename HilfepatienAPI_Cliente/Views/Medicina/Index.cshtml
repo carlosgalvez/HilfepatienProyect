@@ -20,10 +20,14 @@
             @foreach (var medicina in ViewBag.listMedicina)
             {
             <tr>
-                <th>@medicina.Id</th>
-                <th>@medicina.Nombre</th>
-                <th>@medicina.Presentacion</th>
-                <th>@medicina.Tipo_de_Medicamento</th>
+                <td>@medicina.Id</td>
+                <td>@medicina.Nombre</td>
+                <td>@medicina.Presentacion</td>
+                <td>@medicina.Tipo_de_Medicamento</td>
+                <td>
+                    <a onclick=" return confirm('¿Estas seguro/a?')" href="@Url.Action("Delete", "Medicina", new { id = medicina.Id})">Eliminar</a>
+                    <a href="@Url.Action("Edit", "Medicina", new { id = medicina.Id})">Editar</a>
+                </td>
             </tr>
             }
 

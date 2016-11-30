@@ -28,7 +28,29 @@ namespace HilfepatienAPI_Cliente.Controllers
             evm.Empleados.Fecha_Ingreso = DateTime.Now;
             EmpleadosCliente em = new EmpleadosCliente();
             em.Create(evm.Empleados);
-            return View("Index");
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            EmpleadosCliente em = new EmpleadosCliente();
+            em.Delete(id);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            EmpleadosCliente em = new EmpleadosCliente();
+            EmpleadosViewModel evm = new EmpleadosViewModel();
+            evm.Empleados = em.find(id);
+            return View("Edit", evm);
+        }
+        [HttpPost]
+        public ActionResult Edit(EmpleadosViewModel evm)
+        {
+            EmpleadosCliente em = new EmpleadosCliente();
+            em.Edit(evm.Empleados);
+            return RedirectToAction("Index");
         }
 	}
 }

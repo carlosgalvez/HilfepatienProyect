@@ -8,14 +8,15 @@ using System.Web.Mvc;
 
 namespace HilfepatienAPI_Cliente.Controllers
 {
-    public class MedicinaController : Controller
+    public class UsuariosController : Controller
     {
         public ActionResult Index()
         {
-            MedicinaCliente em = new MedicinaCliente();
-            ViewBag.listMedicina = em.findAll();
+            UsuariosCliente em = new UsuariosCliente();
+            ViewBag.listUsuarios = em.findAll();
             return View();
         }
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -23,33 +24,34 @@ namespace HilfepatienAPI_Cliente.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(MedicinaViewModel evm)
+        public ActionResult Create(UsuariosViewModel evm)
         {
-            MedicinaCliente em = new MedicinaCliente();
-            em.Create(evm.Medicina);
+          
+            UsuariosCliente em = new UsuariosCliente();
+            em.Create(evm.Usuarios);
             return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
         {
-            MedicinaCliente em = new MedicinaCliente();
+            UsuariosCliente em = new UsuariosCliente();
             em.Delete(id);
             return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            MedicinaCliente em = new MedicinaCliente();
-            MedicinaViewModel evm = new MedicinaViewModel();
-            evm.Medicina = em.find(id);
+            UsuariosCliente em = new UsuariosCliente();
+            UsuariosViewModel evm = new UsuariosViewModel();
+            evm.Usuarios = em.find(id);
             return View("Edit", evm);
         }
         [HttpPost]
-        public ActionResult Edit(MedicinaViewModel evm)
+        public ActionResult Edit(UsuariosViewModel evm)
         {
-            MedicinaCliente em = new MedicinaCliente();
-            em.Edit(evm.Medicina);
+            UsuariosCliente em = new UsuariosCliente();
+            em.Edit(evm.Usuarios);
             return RedirectToAction("Index");
         }
-    }
+	}
 }

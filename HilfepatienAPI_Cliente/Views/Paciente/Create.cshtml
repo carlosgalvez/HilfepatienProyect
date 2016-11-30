@@ -1,0 +1,70 @@
+﻿@model HilfepatienAPI_Cliente.ViewModels.PacienteViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Registrar Paciente</title>
+</head>
+<body  background="~/images/fondo1.jpg">
+        @using (Html.BeginForm("Create", "Paciente", FormMethod.Post))
+        {
+
+            <fieldset>
+                <legend align="center" class="ltraarriba">Nuevo Paciente</legend>
+                <div align="right">@Html.ActionLink("Regresar a la lista principal", "Index")</div>
+                <center>
+                    <br />
+                    <br />
+                    <div class="editor-field">
+                        <div class="editor-field">
+                            <label>Id</label>
+                            @Html.TextBoxFor(model => model.Paciente.Id)
+                        </div>
+                        <br />
+                        <div class="editor-field">
+                            <label>Nombre</label>
+                            @Html.TextBoxFor(model => model.Paciente.Nombre)
+                        </div>
+                        <br />
+
+                        <div class="editor-field">
+                            <label>Apellido</label>
+                            @Html.TextBoxFor(model => model.Paciente.Apellido)
+                        </div>
+                        <br />
+
+                        <div class="editor-field">
+                            <label>Sexo</label>
+                            @Html.TextBoxFor(model => model.Paciente.Sexo)
+                        </div>
+                        <br />
+
+                        <div class="editor-field">
+                            <label>Edad</label>
+                            @Html.TextBoxFor(model => model.Paciente.Edad)
+                        </div>
+                        <br />
+
+                        <div class="editor-field">
+                            <label>Direccion</label>
+                            @Html.TextBoxFor(model => model.Paciente.Direccion)
+                        </div>
+                        <br />
+
+                        <div class="editor-field">
+                            <label>Telefono</label>
+                            @Html.TextBoxFor(model => model.Paciente.Telefono)
+                        </div>
+                    </div>
+                    <br />
+                    <div class="botonesbajo1">
+                        <p>
+                            <input type="submit" value="Nuevo registro" class="btn-success" />
+                        </p>
+                    </div>
+                </center>
+            </fieldset>
+        }
+</body>
+</html>

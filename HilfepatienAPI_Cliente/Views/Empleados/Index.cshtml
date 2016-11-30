@@ -19,10 +19,12 @@
             </tr>
             @foreach (var empleados in ViewBag.listEmpleados)
             { <tr> 
-            <th>@empleados.Nombre</th>
-            <th>@empleados.Puesto</th>
-            <th>@empleados.Fecha_Ingreso.ToString("dd/MM/yyyy")</th>
-            <th>@empleados.Sueldo</th>
+            <td>@empleados.Nombre</td>
+            <td>@empleados.Puesto</td>
+            <td>@empleados.Fecha_Ingreso.ToString("dd/MM/yyyy")</td>
+            <td>@empleados.Sueldo</td>
+            <td><a onclick=" return confirm('¿Estas seguro/a?')" href="@Url.Action("Delete", "Empleados", new { id = empleados.Id})">Eliminar</a>
+                <a  href="@Url.Action("Edit", "Empleados", new { id = empleados.Id})">Editar</a></td>
             </tr>
             }
 

@@ -1,29 +1,26 @@
 ﻿using HilfepatienApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net;
-using System.Net.Http.Formatting;
-
-
+using System.Web;
 
 namespace HilfepatienAPI_Cliente.Models
 {
-    public class MedicinaCliente
+    public class PacienteCliente
     {
         public String BASE_URL = "http://localhost:41827/api/";
-
-        public IEnumerable<Medicina> findAll()
+        public IEnumerable<Paciente> findAll()
         {
             try
             {
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.GetAsync("Medicina").Result;
+                HttpResponseMessage respuesta = cliente.GetAsync("Paciente").Result;
                 if (respuesta.IsSuccessStatusCode)
-                    return respuesta.Content.ReadAsAsync<IEnumerable<Medicina>>().Result;
+                    return respuesta.Content.ReadAsAsync<IEnumerable<Paciente>>().Result;
                 return null;
 
             }
@@ -32,16 +29,16 @@ namespace HilfepatienAPI_Cliente.Models
                 return null;
             }
         }
-        public Medicina find(int id)
+        public Paciente find(int id)
         {
             try
             {
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.GetAsync("Medicina/" + id).Result;
+                HttpResponseMessage respuesta = cliente.GetAsync("Paciente/" + id).Result;
                 if (respuesta.IsSuccessStatusCode)
-                    return respuesta.Content.ReadAsAsync<Medicina>().Result;
+                    return respuesta.Content.ReadAsAsync<Paciente>().Result;
                 return null;
 
             }
@@ -50,14 +47,14 @@ namespace HilfepatienAPI_Cliente.Models
                 return null;
             }
         }
-        public bool Create(Medicina Medicina)
+        public bool Create(Paciente Paciente)
         {
             try
             {
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.PostAsJsonAsync("Medicina", Medicina).Result;
+                HttpResponseMessage respuesta = cliente.PostAsJsonAsync("Paciente", Paciente).Result;
                 return respuesta.IsSuccessStatusCode;
 
             }
@@ -66,14 +63,14 @@ namespace HilfepatienAPI_Cliente.Models
                 return false;
             }
         }
-        public bool Edit(Medicina Medicina)
+        public bool Edit(Paciente Paciente)
         {
             try
             {
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.PutAsJsonAsync((string)("Medicina/" + Medicina.Id), Medicina).Result;
+                HttpResponseMessage respuesta = cliente.PutAsJsonAsync((string)("Paciente/" + Paciente.Id), Paciente).Result;
                 return respuesta.IsSuccessStatusCode;
             }
             catch
@@ -88,7 +85,7 @@ namespace HilfepatienAPI_Cliente.Models
                 HttpClient cliente = new HttpClient();
                 cliente.BaseAddress = new Uri(BASE_URL);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage respuesta = cliente.DeleteAsync("Medicina/" + id).Result;
+                HttpResponseMessage respuesta = cliente.DeleteAsync("Paciente/" + id).Result;
                 return respuesta.IsSuccessStatusCode;
 
             }

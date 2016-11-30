@@ -67,5 +67,36 @@ namespace HilfepatienAPI_Cliente.Models
                 return false;
             }
         }
+        public bool Edit(Empleados Empleados)
+        {
+            try
+            {
+                HttpClient cliente = new HttpClient();
+                cliente.BaseAddress = new Uri(BASE_URL);
+                cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage respuesta = cliente.PutAsJsonAsync((string)("Empleados/"+ Empleados.Id), Empleados).Result;
+                return respuesta.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool Delete(int id)
+        {
+            try
+            {
+                HttpClient cliente = new HttpClient();
+                cliente.BaseAddress = new Uri(BASE_URL);
+                cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage respuesta = cliente.DeleteAsync("Empleados/" + id).Result;
+                return respuesta.IsSuccessStatusCode;
+                
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
